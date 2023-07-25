@@ -43,6 +43,15 @@ if (NOT raylib_cpp_FOUND)
     # target_compile_options(raylib_cpp PRIVATE "-w")
 endif()
 
+find_package(EnTT QUIET)
+if (NOT EnTT_FOUND)
+    add_git_dependency(
+        EnTT
+        https://github.com/skypjack/entt.git
+        v3.12.2
+    )
+endif()
+
 ##########################################################################
 # Add executables and setup the project stuff
 ##########################################################################
@@ -56,3 +65,4 @@ add_executable(${PROJECT_NAME})
 target_sources(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCES})
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
 target_link_libraries(${PROJECT_NAME} PRIVATE raylib_cpp)
+target_link_libraries(${PROJECT_NAME} PRIVATE EnTT)
