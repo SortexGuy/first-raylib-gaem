@@ -14,7 +14,7 @@ class App {
 };
 
 App::App(int16_t scrWidth, int16_t scrHeight, const char* title) {
-  window = raylib::Window(scrWidth, scrHeight, title);
+  window.Init(scrWidth, scrHeight, title, 0U);
   window.SetTargetFPS(60);
 }
 
